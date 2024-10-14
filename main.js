@@ -1,30 +1,44 @@
-import Vue from 'https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.esm.browser.min.js'
+const { createApp, ref } = Vue
+const { createRouter, createMemoryHistory, RouterLink, RouterView } = VueRouter
 
-import {
-    Navbar
-} from './components/navbar.js'
+import Home from './components/home.js'
 
-import {
-    MainTemplate
-} from './templates/main-template.js'
+import About from './components/about.js'
 
-import { About } from './components/about.js'
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+]
 
-Vue.use(VueRouter)
-
-const router = new VueRouter({
-  routes: [{
-    path: '/about',
-    component: About,
-    name: "About Us Page"
-  }]
+const router = createRouter({
+  history: createMemoryHistory(),
+  routes,
 })
 
-new Vue({
-    el: '#app', // This should be the same as your <div id=""> from earlier.
-    components: {
-        'navbar': Navbar
-    },
-    router,
-    template: MainTemplate
+createApp({
+  setup() {
+    return {
+      count: ref(0)
+    }
+  },
+  components: {
+    Home,
+    RouterLink,
+    RouterView
+  },
+  template: `
+   <h1>Hello Vue No Node!</h1>
+        <p>
+            <strong>Current route path:</strong> {{ $route.fullPath }}
+        </p>
+        <nav>
+            <RouterLink to="/">Go to Home</RouterLink>
+            <RouterLink to="/about">Go to About</RouterLink>
+        </nav>
+        <main>
+            <RouterView />
+        </main>
+  `
 })
+.use(router)
+.mount('#app')

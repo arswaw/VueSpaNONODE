@@ -1,5 +1,5 @@
 # VueSpaNONODE
-This is a single-page application that uses Vue and Vue Router. It uses ES6 imports to render components and templates. No Node is required. Just git clone and serve statically. 
+This is a single-page application that uses Vue 3 and Vue Router. It uses ES6 imports to render components and templates. No Node is required. Just git clone and serve statically. 
 
 You can also select "Use this Template" in order to create a new single-page application that you can build upon. You can write code in any environment that has a static web-server. There are no dependencies.
 

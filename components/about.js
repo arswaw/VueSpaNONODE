@@ -1,8 +1,6 @@
-import { AboutTemplate } from "../templates/about-template.js";
-
-
-const About = {
-    template: AboutTemplate,
+export default {
+    setup() {},
+    template: `<h1>This is About</h1>`
+    // Can also target an in-DOM template:
+    // template: '#my-template-element'
 }
-
-export { About }
